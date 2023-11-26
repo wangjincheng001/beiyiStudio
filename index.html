@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <style>
+    /* 调整默认样式 */
+    body,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    ul,
+    ol,
+    dd,
+    dl,
+    form,
+    input,
+    textarea,
+    article,
+    img,
+    section,
+    li {
+      margin: 0;
+      padding: 0;
+      font-weight: normal;
+      font-family: '微软雅黑', "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", SimHei, simsun, sans-serif;
+      /*letter-spacing: 5px;*/
+    }
+
+    p,
+    a {
+      font-size: 14.3px !important;
+    }
+
+    li {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+
+
+    img {
+      border: none;
+    }
+
+    /* 首页导航样式 */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      background-color: #fff;
+      z-index: 10;
+    }
+
+    .h-index-nav {
+      height: 90px;
+      width: 1200px;
+      background-color: #fff;
+      margin: 0 auto;
+    }
+
+    .h-index-nav>ul>li {
+      width: 95px;
+      height: 90px;
+      line-height: 90px;
+      text-align: center;
+      float: left;
+      position: relative;
+    }
+
+    .h-index-nav>ul {
+      float: right;
+    }
+
+    .h-index-nav>a {
+      float: left;
+    }
+
+    .h-index-nav>a>img {
+      margin-top: 20px;
+    }
+
+    .h-index-nav-menu {
+      padding: 15px 0 15px 0;
+      width: 170px;
+      display: none;
+      background: #fff;
+      border-top: 1px solid #ebebeb;
+      position: relative;
+      top: -1px;
+      left: calc(90px/2 - 170px/2);
+    }
+
+    .h-index-nav-menu a {
+      display: block;
+      height: 38px;
+      line-height: 38px;
+    }
+
+    .h-index-nav ul a {
+      color: #333;
+    }
+
+    .h-index-nav ul a:hover {
+      color: #00a638;
+    }
+
+    .h-index-nav>ul>li:hover .h-index-nav-menu {
+      display: block;
+    }
+
+    /* 轮播图 */
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      height: 727px;
+    }
+
+    .carousel img {
+      position: absolute;
+      width: 100%;
+      height: 727px;
+      object-fit: cover;
+      /* 0  完全透明; 1 完全不透明 */
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    .carousel .h-turn-pic-circle {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+
+    }
+
+    .carousel .h-turn-pic-circle-center {
+      width: 650px;
+      margin: 0 auto;
+
+    }
+
+    .carousel .h-circle {
+      width: 120px;
+      height: 4px;
+      background: #fff;
+      margin-right: 10px;
+      opacity: 0.5;
+      float: left;
+    }
+
+    .carousel .h-circle div {
+      width: 120px;
+      height: 100px;
+      margin-top: -50px;
+      cursor: pointer;
+    }
+
+    .carousel .h-circle-s {
+      opacity: 1;
+    }
+
+    /* 6大优势 */
+    .index-menu-main {
+      width: 100%;
+      height: 150px;
+
+    }
+
+    .index-menu {
+      margin: 0 auto;
+      padding-top: 16px;
+      height: 110px;
+      width: 1080px;
+
+    }
+
+    .index-menu>a {
+      margin-right: 2px;
+      background-color: #119554;
+      float: left;
+      color: #fff;
+      height: 110px;
+      width: 177px;
+    }
+
+    .index-menu>a>img {
+      margin-left: 16px;
+      float: left;
+      width: 40px;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .index-menu>a>div {
+      margin-left: 16px;
+      float: left;
+      display: block;
+      width: 90px;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* 专业教学 */
+    .index-class {
+      width: 100%;
+      height: 395px;
+    }
+
+    .index-class>h2 {
+      margin-top: 24px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 30px;
+    }
+
+    .index-class>h3 {
+      margin-top: 8px;
+      text-align: center;
+      color: #00a638;
+      font-size: 17px;
+    }
+
+    .index-class>div {
+      margin: 0 auto;
+      margin-top: 32px;
+      width: 1090px;
+
+    }
+
+    .index-overflow {
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .index-overflow>a {
+      display: block;
+
+      margin: 0 10px 10px 4px;
+      float: left;
+      flex: 1;
+    }
+
+    .index-overflow>a>h2 {
+      color: #fefefe;
+      background-color: #119554;
+      width: 100%;
+      height: 80px;
+      line-height: 80px;
+      text-align: center;
+      font-size: 19px;
+    }
+
+    .index-overflow>a>div,
+    .index-overflow>a>section {
+      display: block;
+      background-color: #f8f8f8;
+      height: 189px;
+    }
+
+    .index-overflow>a>div>p {
+      margin-left: 17px;
+      padding-top: 28px;
+      color: rgb(144, 144, 144);
+      font-size: 14px;
+      line-height: 20px;
+      text-indent: 13px;
+    }
+
+    .index-overflow>a>section {
+      padding-top: 24px;
+      height: 189px;
+      display: none;
+    }
+
+    .index-overflow>a>section>p {
+      color: #909090;
+      text-align: center;
+      margin: 0 auto;
+      margin-bottom: 14px;
+      width: 142px;
+      height: 24px;
+      line-height: 24px;
+    }
+
+    .index-overflow>a:hover>section>p {
+      color: #fff;
+      background-color: rgb(17, 149, 84);
+    }
+
+    .index-overflow>a:hover>div {
+      display: none;
+    }
+
+    .index-overflow>a:hover>section {
+      display: block;
+    }
+
+    /* 留言 */
+    .index-culture {
+      margin: 0 auto;
+      margin-top: 31.5px;
+      width: 1080px;
+      height: 323px;
+    }
+
+    .index-culture>a {
+      display: block;
+    }
+
+    .index-culture>a>img {
+      width: 812px;
+      height: 323px;
+      float: left;
+    }
+
+    .index-culture .index-culture-speak {
+      margin-left: 8px;
+      width: 258px;
+      height: 323px;
+      float: left;
+      background-color: #f8f8f8;
+    }
+
+    .index-culture-speak-tab {
+      overflow: hidden;
+      box-shadow: 0 2px 1px rgba(0, 0, 0, .1);
+    }
+
+    .index-culture-speak-tab p {
+      display: block;
+      margin: 9.5px 0 0 16px;
+      width: 111.4px;
+      height: 31.7px;
+      line-height: 31.7px;
+      text-align: center;
+      float: left;
+      color: #6c6c6c;
+      cursor: pointer;
+    }
+
+    .index-culture-speak-tab .active {
+      color: #00a638;
+      border-bottom: 1px solid #00a638;
+    }
+
+    .index-culture-speak-content {
+      width: 100%;
+      height: 280px;
+    }
+
+    .index-culture-speak-content>form {
+      display: none;
+    }
+
+    .index-culture-speak-content>form>label {
+      display: block;
+      margin: 24px 0 0 24px;
+
+    }
+
+    .index-culture-speak-content>form>label>input {
+      background-color: #e7e7e7;
+      border: none;
+      padding: 0 8px;
+      margin-left: 10px;
+      width: 158px;
+      height: 24px;
+      outline: none;
+    }
+
+    .index-culture-speak-content>form>label>textarea {
+      background-color: #e7e7e7;
+      border: none;
+      vertical-align: top;
+      padding: 0 8px;
+      margin-left: 10px;
+      width: 158px;
+      outline: none;
+    }
+
+
+
+    .index-culture-speak-content>form>input {
+      margin: 24px 13px 0 0;
+      padding: 0 8px;
+      width: 174px;
+      height: 24px;
+      float: right;
+      background-color: #f7952e;
+      color: #fff;
+      border: none;
+    }
+
+    /* 广告 从未来出发 */
+    .culture_go_a {
+      display: block;
+      width: 100%;
+    }
+
+    .culture_go {
+      display: block;
+      margin: 0 auto;
+      margin-top: 31.5px;
+      width: 1080px;
+      height: 165px;
+      object-fit: cover;
+    }
+
+    /* 横线 */
+    .index-line {
+      width: 100%;
+      height: 30px;
+      background-color: #f8f8f8;
+      margin: 30px 0;
+      border-top: 1px solid #e1e1e1;
+    }
+
+    /* 师资团队 */
+    .index-teacher {
+      width: 100%;
+      height: 488.5px;
+      padding-top: 31.5px;
+      background: url(./images/teacherTeam/index-teacher-bg.jpg) no-repeat center center;
+    }
+
+    .index-teacher-center {
+      width: 1080px;
+      height: 425px;
+      margin: 0 auto;
+    }
+
+    .index-teacher-center h2 {
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      font-size: 40px;
+    }
+
+    .index-teacher-center h3 {
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      font-size: 24px;
+      margin: 8px 0;
+    }
+
+    .index-teacher-center>p {
+      color: #fff;
+      margin: 8px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .index-teacher-center>p a {
+      position: absolute;
+      right: 0;
+      color: #515151;
+    }
+
+    .index-teacher-turn {
+      margin: 0 auto;
+      margin-top: 32px;
+      width: 980px;
+      height: 280px;
+      position: relative;
+    }
+
+    .index-teacher-content ul {
+      position: absolute;
+      display: none;
+    }
+
+    .index-teacher-content ul:nth-child(1) {
+      display: block;
+    }
+
+    .index-teacher-content ul a {
+      background-color: none;
+    }
+
+    .index-teacher-content li {
+      width: 183px;
+      height: 261px;
+      float: left;
+      margin-right: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .index-teacher-content>ul>li:nth-last-child(1) {
+      margin-right: 0;
+    }
+
+    .index-teacher-content li img {
+      width: 183px;
+      height: 279px;
+      object-fit: cover;
+    }
+
+    .index-teacher-content li div {
+      width: 183px;
+      height: 48px;
+      background-color: #eee;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    .index-teacher-content li:hover div {
+      background-color: #119554;
+    }
+
+    .index-teacher-content li div h2 {
+      display: block;
+      width: 100%;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      color: #464646;
+      font-size: 17px;
+    }
+
+    .index-teacher-content li:hover div h2,
+    .index-teacher-content li:hover div p {
+      color: #fff;
+    }
+
+    .index-teacher-content li div p {
+      display: block;
+      width: 100%;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #464646;
+    }
+
+    .index-left-jt {
+      position: absolute;
+      left: -50px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .index-right-jt {
+      position: absolute;
+      right: -50px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* 立即咨询 */
+    .culture_consult_a {
+      display: block;
+      width: 100%;
+    }
+
+    .culture_consult {
+      display: block;
+      margin: 0 auto;
+      margin-top: 31.5px;
+      width: 1080px;
+      height: 236px;
+      object-fit: cover;
+    }
+
+    /* 四大体系 */
+    #by_system {
+      display: block;
+      height: 220px;
+    }
+
+    /* 北艺环境 */
+    .index-en {
+      width: 100%;
+      margin-top: 40px;
+      background: url("./images/environment/index-en-bg.jpg") no-repeat center center;
+      height: 640px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .index-en-center {
+      width: 1080px;
+      margin: 0 auto;
+    }
+
+    .index-en-center h2 {
+      padding-top: 55px;
+      font-weight: 700;
+      font-size: 40px;
+    }
+
+    .index-en-center h3 {
+      margin-top: 8px;
+    }
+
+    .index-en-center>p {
+      width: 676px;
+      margin: 0 auto;
+      margin-top: 8px;
+    }
+
+    .index-en-content {
+      margin-top: 30px;
+    }
+
+    .index-en-content>div {
+      width: 260px;
+      height: 378px;
+      float: left;
+      margin-right: 8px;
+      position: relative;
+    }
+
+    .index-en-content>div>img {
+      display: block;
+      width: 100%;
+      height: 315px;
+      object-fit: cover;
+    }
+
+    .index-en-content>div>p {
+      display: block;
+      width: 100%;
+      height: 63px;
+      line-height: 63px;
+      text-align: center;
+      background-color: #119554;
+    }
+
+    .index-en-content>div>section {
+      width: 100%;
+      height: 100%;
+      background-color: #119554;
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+      display: none;
+    }
+
+    .index-en-content>div:hover>section {
+      display: block;
+    }
+
+    .index-en-content>div>section>h2 {
+      padding-top: 20px;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .index-en-content>div>section>p {
+      margin: 20px 52px 0 52px;
+      text-align: left;
+    }
+
+    .index-en-content>div>section>a {
+      position: absolute;
+      display: block;
+      width: 170px;
+      height: 55px;
+      line-height: 55px;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+    }
+
+    /* 空行 */
+    .index-line1 {
+      width: 100%;
+      height: 30px;
+    }
+
+    /* 北艺作品,news */
+    .index-works-news {
+      margin: 0 auto;
+      margin-top: 32px;
+      height: 453px;
+      width: 1080px;
+    }
+
+    .index-works {
+      width: 433px;
+      float: left;
+    }
+
+    .index-works>h2 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .index-works>h2>a {
+      color: #9f9f9f;
+      float: right;
+      margin: 8px 38px 0 0;
+    }
+
+    .index-works>ul,
+    .index-news>ul {
+      margin-top: 32px;
+    }
+
+    .index-works>ul>li>a {
+      color: #9f9f9f;
+    }
+
+    .index-works>ul>.active {
+      background: #22b554 !important;
+    }
+
+    /* 咨询页 */
+    .index-news {
+      width: 613px;
+      float: left;
+      margin-left: 32px;
+    }
+
+    .index-news>h2 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .index-news>h2>a {
+      color: #9f9f9f;
+      float: right;
+      margin: 8px 38px 0 0;
+    }
+
+    .index-news>ul>li,
+    .index-works>ul>li {
+      float: left;
+      padding: 0 4px;
+      margin-right: 24px;
+      cursor: pointer;
+    }
+
+    .index-news>ul>li>a {
+      color: #9f9f9f;
+    }
+
+    .index-news>ul>.active {
+      background: #22b554 !important;
+    }
+
+    .index-works-news .active>a {
+      color: #fff !important;
+    }
+
+    .index-works-content {
+      margin-top: 80px;
+    }
+
+    .index-works-content>div>a:nth-child(4),
+    .index-works-content>div>a:nth-child(8) {
+      margin-right: 0;
+    }
+
+    .index-works-content>div>a {
+      display: block;
+      width: 102px;
+      height: 142px;
+      overflow: hidden;
+      float: left;
+      margin: 0 8px 8px 0;
+    }
+
+    .index-works-content>div>a>img,
+    .index-news-content>div>a>img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      transition: all .1s;
+    }
+
+    .index-news-content {
+      margin-top: 80px;
+    }
+
+    .index-news-content>div>a:nth-child(3),
+    .index-news-content>div>a:nth-child(6) {
+      margin-right: 0;
+    }
+
+    .index-news-content>div>a {
+      display: block;
+      width: 197px;
+      height: 142px;
+      overflow: hidden;
+      float: left;
+      margin: 0 8px 8px 0;
+    }
+
+    .index-works-content>div>a:hover img,
+    .index-news-content>div>a:hover img {
+      width: 110%;
+      height: 110%;
+    }
+
+    .index-works-content>div,
+    .index-news-content>div {
+      display: none;
+    }
+
+    .index-works-content>div:nth-child(1),
+    .index-news-content>div:nth-child(1) {
+      display: block;
+    }
+
+    /* 校区地址 */
+    .index-address {
+      width: 100%;
+      height: 600px;
+    }
+
+    .index-address-center {
+      width: 1200px;
+      margin: 0 auto;
+    }
+
+    .index-address-center>a {
+      display: block;
+      width: 210px;
+      height: 160px;
+      float: left;
+      margin: 400px 30px 0 0;
+      position: relative;
+    }
+
+    .index-address-center>a>img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .index-address-center>a>div {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(31, 31, 31, .6);
+    }
+
+    .index-address-center>a>div>h2 {
+      padding-top: 50px;
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+      font-size: 18px;
+      width: 100%;
+    }
+
+    .index-address-center>a>div>p {
+      text-align: center;
+      width: 160px;
+      height: 45px;
+      line-height: 45px;
+      color: #fff;
+      font-weight: 700;
+      margin: 20px 25px 0;
+      background: #00a638;
+    }
+
+    .index-address-center>a:hover div {
+      background-color: rgba(242, 242, 242, .8);
+    }
+
+    /* 页尾 */
+    footer {
+      border-top: 1px solid #ccc;
+      padding-top: 80px;
+      min-width: 1250px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .footer-top {
+      width: 1080px;
+      height: 276px;
+      margin: 0 auto;
+    }
+
+    .footer-top-left {
+      width: 158px;
+      float: left;
+    }
+
+    .footer-top-center {
+      width: 765px;
+      float: left;
+    }
+
+    .footer-top-right {
+      float: left;
+    }
+
+    .footer-top-left>a {
+      display: block;
+      height: 20px;
+      margin-bottom: 8px;
+      color: #999;
+    }
+
+    .footer-top-center>p {
+      margin: 0 auto;
+      margin-bottom: 8px;
+      width: 220px;
+      color: #999;
+    }
+
+    .footer-top-center>p>span {
+      margin-right: 20px;
+      color: #777;
+      font-weight: bold;
+    }
+
+    .footer-top-center>div {
+      margin-top: 37px;
+      text-align: center;
+    }
+
+    .footer-top-center>div>div {
+      display: inline-block;
+    }
+
+    .footer-top-center>div>div>a:nth-child(1) {
+      float: left;
+      margin-right: 64px;
+    }
+
+    .footer-top-right p {
+      margin-top: 8px;
+      text-align: center;
+      width: 120px;
+      height: 19px;
+      color: #999;
+    }
+
+    .footer-top-right img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+    }
+
+    .footer-bottom {
+      margin: 0 auto;
+      width: 1080px;
+      color: #999;
+    }
+
+    .footer-bottom a {
+      color: #999;
+    }
+
+    .footer-bottom div p:nth-child(1),
+    .footer-bottom div p:nth-child(2),
+    .footer-bottom div p:nth-child(3) {
+      text-align: center;
+    }
+
+    .footer-bottom div p:nth-child(1) {
+      margin-bottom: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部开始 -->
+  <header>
+    <!-- 导航开始 -->
+    <nav>
+      <div class="h-index-nav">
+        <a href="#">
+          <img src="./images/logo.png" alt="">
+        </a>
+        <ul>
+          <li>
+            <a href="#">关于</a>
+            <div class="h-index-nav-menu">
+              <a href="#">管理服务</a>
+              <a href="#">画室简介</a>
+              <a href="#">出版书籍</a>
+              <a href="#">联系我们</a>
+            </div>
+          </li>
+          <li>
+            <a href="#">招生</a>
+            <div class="h-index-nav-menu">
+              <a href="#">招生简章</a>
+              <a href="#">家长问答</a>
+              <a href="#">助学减免</a>
+              <a href="#">在线报名</a>
+            </div>
+          </li>
+          <li>
+            <a href="#">环境</a>
+            <div class="h-index-nav-menu">
+              <a href="#">司门口校区</a>
+              <a href="#">东湖校区</a>
+              <a href="#">二七路校区</a>
+              <a href="#">新湖美校区</a>
+              <a href="#">古田校区</a>
+            </div>
+          </li>
+          <li>
+            <a href="#">师资</a>
+          </li>
+          <li>
+            <a href="#">作品</a>
+            <div class="h-index-nav-menu">
+              <a href="#">素描作品</a>
+              <a href="#">速写作品</a>
+              <a href="#">色彩作品</a>
+              <a href="#">设计作品</a>
+            </div>
+          </li>
+          <li>
+            <a href="#">教学</a>
+            <div class="h-index-nav-menu">
+              <a href="#">素描教学</a>
+              <a href="#">色彩教学</a>
+              <a href="#">速写教学</a>
+              <a href="#">设计教学</a>
+            </div>
+          </li>
+          <li>
+            <a href="#">视频</a>
+            <div class="h-index-nav-menu">
+              <a href="#">素描视频</a>
+              <a href="#">速写视频</a>
+              <a href="#">色彩视频</a>
+              <a href="#">其它视频</a>
+            </div>
+          </li>
+          <li>
+            <a href="#">资讯</a>
+            <div class="h-index-nav-menu">
+              <a href="#">画室咨讯</a>
+              <a href="#">艺考资讯</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- 轮播图开始 -->
+    <div class="carousel">
+      <!-- 轮播图片 -->
+      <a href="#">
+        <img src="./images/header-swiper/14ddc6151b7f672b.jpg" alt="图片1">
+      </a>
+      <a href="#">
+        <img src="./images/header-swiper/441e21323715f004.jpg" alt="图片2">
+      </a>
+      <a href="#">
+        <img src="./images/header-swiper/5dffc8fb154b1fa4.jpg" alt="图片3">
+      </a>
+      <a href="#">
+        <img src="./images/header-swiper/82d3c06dfd031242.jpg" alt="图片4">
+      </a>
+      <a href="#">
+        <img src="./images/header-swiper/953c8e5a30a02f0a.jpg" alt="图片5">
+      </a>
+      <!-- 自选按钮 -->
+      <div class="h-turn-pic-circle">
+        <div class="h-turn-pic-circle-center">
+          <div class="h-circle h-circle-s">
+            <div class="h-circle-big"></div>
+          </div>
+          <div class="h-circle">
+            <div class="h-circle-big"></div>
+          </div>
+          <div class="h-circle">
+            <div class="h-circle-big"></div>
+          </div>
+          <div class="h-circle">
+            <div class="h-circle-big"></div>
+          </div>
+          <div class="h-circle">
+            <div class="h-circle-big"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- 头部结束 -->
+  <!-- 六大优势开始 -->
+  <div class="index-menu-main">
+    <div class="index-menu">
+      <a href="#">
+        <img src="./images/advantage/2c331f166c0b6214.png" alt="小班教学">
+        <div>
+          <h3>小班教学</h3>
+          <p>18-22人组成一个精品小班</p>
+        </div>
+      </a>
+      <a href="#">
+        <img src="./images/advantage/006bc4a6dfe0d377.png" alt="师资团队">
+        <div>
+          <h3>师资团队</h3>
+          <p>坚持60%以上的央美国美师资授课</p>
+        </div>
+      </a>
+      <a href="#">
+        <img src="./images/advantage/7b32733b80a00fcf.png" alt="逐梦美院">
+        <div>
+          <h3>逐梦美院</h3>
+          <p>向各大美术院校输送众多优秀学生</p>
+        </div>
+      </a>
+      <a href="#">
+        <img src="./images/advantage/661e7f900d30b45d.png" alt="规划管理">
+        <div>
+          <h3>规划管理</h3>
+          <p>实施24小时监控摄像,封闭式管理</p>
+        </div>
+      </a>
+      <a href="#">
+        <img src="./images/advantage/d42b982ea0347a6f.png" alt="文艺兼顾">
+        <div>
+          <h3>文艺兼顾</h3>
+          <p>周一至周五每天2-3小时学习</p>
+        </div>
+      </a>
+      <a href="#">
+        <img src="./images/advantage/f4a9f1858c965d2a.png" alt="德才兼备">
+        <div>
+          <h3>德才兼备</h3>
+          <p>提高学生成绩并引导建立正确价值取向</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <!-- 六大优势结束 -->
+  <!-- 专业教学开始 -->
+  <div class="index-class">
+    <h2>专业化,个性化的教学</h2>
+    <h3>多方位的教学,是我们考试成功的保障!</h3>
+    <div class="index-overflow">
+      <a href="#">
+        <h2>招生简章</h2>
+        <div>
+          <p>北艺画室2022-2023学年招生简章发布（内含班型及收费）</p>
+        </div>
+        <section>
+          <p>三大美院班</p>
+          <p>统考班</p>
+          <p>校考班</p>
+          <p>复读班</p>
+        </section>
+      </a>
+      <a href="#">
+        <h2>统考班</h2>
+        <div>
+          <p>针对想快速及高分通过湖北美术统考的同学，统考后也可以根据需要参加北艺的校考班。</p>
+        </div>
+        <section>
+          <p>统考VIP班</p>
+          <p>统考高端班</p>
+          <p>统考精品班</p>
+        </section>
+      </a>
+      <a href="#">
+        <h2>三美班</h2>
+        <div>
+          <p>针对文化课400分以上，立志报考中央美院、清华、中国美院、中传、北影、东华、北服的学员。兼顾湖北美院及其他美院、211、985重点院校。</p>
+        </div>
+        <section>
+          <p>三大美院VIP班</p>
+          <p>三大美院高端班</p>
+        </section>
+      </a>
+      <a href="#">
+        <h2>校考班</h2>
+        <div>
+          <p>针对统考后想冲刺中央美院、清华、中国美院、中传、北影、东华、北服的学员。兼顾湖北美院及其他美院、211、985重点院校。</p>
+        </div>
+        <section>
+          <p>湖美班</p>
+          <p>设计班</p>
+        </section>
+      </a>
+      <a href="#">
+        <h2>周末班</h2>
+        <div>
+          <p>针对高二、高一、初中及小学4年级以上有名校梦想的美术生和美术爱好者。</p>
+        </div>
+        <section>
+          <p>春季班</p>
+          <p>暑期班</p>
+          <p>秋季班</p>
+          <p>寒假班</p>
+        </section>
+      </a>
+    </div>
+  </div>
+  <!-- 专业教学结束 -->
+  <!-- 留言开始 -->
+  <div class="index-culture">
+    <a href="#">
+      <img src="./images/culture/afdc3254e74fe28b.jpg" alt="PC文化课合作品牌">
+    </a>
+    <div class="index-culture-speak">
+      <div class="index-culture-speak-tab">
+        <p class="active">留言列表</p>
+        <p class="">在线留言</p>
+      </div>
+      <div class="index-culture-speak-content">
+        <ul class="js-item">
+
+        </ul>
+        <form action="#" method="post">
+          <label>姓名
+            <input type="text" name="name">
+          </label>
+          <label>手机
+            <input type="tel" name="phone" maxlength="11">
+          </label>
+          <label>备注
+            <textarea name="content"></textarea>
+          </label>
+          <input type="submit" value="确认留言">
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- 留言结束 -->
+  <!-- 广告 从未来出发... -->
+  <a href="#" class="culture_go_a">
+    <img src="./images/culture/e2966c6e4bab204f.jpg" alt="PC广告" class="culture_go">
+  </a>
+  <!-- 广告结束 -->
+  <!-- 横线 -->
+  <div class="index-line"></div>
+  <!-- 横线结束 -->
+  <!-- 师资团队开始 -->
+  <div class="index-teacher">
+    <div class="index-teacher-center">
+      <h2>师资团队</h2>
+      <h3>高素质的教师团队是我们成功的关键</h3>
+      <p>教学主管+教学组长+骨干教师+北艺主教<a href="#">更多></a></p>
+      <div class="index-teacher-turn">
+        <div class="index-teacher-content">
+          <ul>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/tujin.jpg" alt="">
+                <div>
+                  <h2>涂静</h2>
+                  <p>校长</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/liuxundin.jpg" alt="">
+                <div>
+                  <h2>刘洵定</h2>
+                  <p>教学主管</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/zhaichenglei.jpg" alt="">
+                <div>
+                  <h2>翟成磊</h2>
+                  <p>教学主管</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/chenhao.jpg" alt="">
+                <div>
+                  <h2>陈浩</h2>
+                  <p>教学主管</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/luosheng.jpg" alt="">
+                <div>
+                  <h2>罗盛</h2>
+                  <p>教学主管</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/pengbo.jpg" alt="">
+                <div>
+                  <h2>彭博</h2>
+                  <p>教研主管</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/zhanglin.jpg" alt="">
+                <div>
+                  <h2>张琳</h2>
+                  <p>教研主管</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/luohonyan.jpg" alt="">
+                <div>
+                  <h2>罗红岩</h2>
+                  <p>教学督导</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/denglei.jpg" alt="">
+                <div>
+                  <h2>邓蕾</h2>
+                  <p>色彩主教</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/xiangyon.jpg" alt="">
+                <div>
+                  <h2>向雍</h2>
+                  <p>速写主教</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/zhangsisi.jpg" alt="">
+                <div>
+                  <h2>张思思</h2>
+                  <p>色彩主教</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/zhuxiaohui.jpg" alt="">
+                <div>
+                  <h2>朱小会</h2>
+                  <p>速写主教</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/zhaoyingchun.jpg" alt="">
+                <div>
+                  <h2>赵迎春</h2>
+                  <p>素描主教</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/yangping.jpg" alt="">
+                <div>
+                  <h2>杨萍</h2>
+                  <p>色彩主教</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/teacherTeam/wangtiantian.jpg" alt="">
+                <div>
+                  <h2>汪甜甜</h2>
+                  <p>色彩主教</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <img src="./images/teacherTeam/index-left-jt.png" alt="" class="index-left-jt">
+        <img src="./images/teacherTeam/index-right-jt.png" alt="" class="index-right-jt">
+      </div>
+
+    </div>
+  </div>
+  <!-- 师资团队结束 -->
+  <!-- 立即资讯 -->
+  <a href="#" class="culture_consult_a">
+    <img src="./images/culture/ef185041632d7fc9.png" alt="PC广告" class="culture_consult">
+  </a>
+  <!-- 立即资讯结束 -->
+  <!-- 北艺四大体系 -->
+  <div class="index-class">
+    <h2>北艺四大体系，18个环节</h2>
+    <h3>帮您解决升学难题，培训效果看得见</h3>
+    <div class="index-overflow">
+      <a href="#">
+        <h2>规划体系</h2>
+        <section id="by_system">
+          <p>上门咨询</p>
+          <p>入学测试</p>
+          <p>升学规划定位</p>
+          <p>定制学习计划</p>
+          <p>建立学员档案</p>
+        </section>
+      </a>
+      <a href="#">
+        <h2>课程体系</h2>
+        <section id="by_system">
+          <p>预备课程</p>
+          <p>暑期强化课程</p>
+          <p>统考课程</p>
+          <p>校考专题训练</p>
+        </section>
+      </a>
+      <a href="#">
+        <h2>教辅体系</h2>
+        <section id="by_system">
+          <p>课后辅导答疑</p>
+          <p>周考评</p>
+          <p>月反馈</p>
+        </section>
+      </a>
+      <a href="#">
+        <h2>考务体系</h2>
+        <section id="by_system">
+          <p>报考院校规划</p>
+          <p>免费考试代报名</p>
+          <p>真题模考</p>
+          <p>考前心理辅导</p>
+          <p>教师带队考试</p>
+          <p>高考志愿填报讲座</p>
+        </section>
+      </a>
+    </div>
+  </div>
+  <!-- 北艺四大体系结束 -->
+  <!-- 北艺环境 -->
+  <div class="index-en">
+    <div class="index-en-center">
+      <h2>北艺环境</h2>
+      <h3>“北艺绿洲”屹立“高考大漠”多年，离不开舒适、实用的硬件设施</h3>
+      <p>这是北艺的生活环境，我们注重教学环境，是为了更好地学习，我们注重每一个生活环境， 温暖如家，让你没有后顾之忧，勇敢地接受挑战</p>
+      <div class="index-en-content">
+        <div>
+          <img src="./images/environment/416f996f2b3f64fa.jpg" alt="">
+          <p>教学环境</p>
+          <section>
+            <h2>教学环境</h2>
+            <p>每间画室都安装独立空调，文化课教室玻璃黑板、 木地板、课桌椅均选用舒适实用的高端品牌,超清投影仪、专业音响系统。</p>
+            <a href="#">查看详情+</a>
+          </section>
+        </div>
+        <div>
+          <img src="./images//environment/a64a8d46c1af090e.jpg" alt="">
+          <p>寝室环境</p>
+          <section>
+            <h2>寝室环境</h2>
+            <p>画室所有宿舍均配有洗衣机、空调、热水器、储物柜等。更好的环境是为了更好的学习</p>
+            <a href="#">查看详情+</a>
+          </section>
+        </div>
+        <div>
+          <img src="./images/environment/2f5f5d7fb69c9159.jpg" alt="">
+          <p>周边环境</p>
+          <section>
+            <h2>周边环境</h2>
+            <p>画室四大校区均选址在交通便利、生活方便、艺术氛围浓厚的核心区域</p>
+            <a href="#">查看详情+</a>
+          </section>
+        </div>
+        <div>
+          <img src="./images/environment/c3c8492fde67d4ff.jpg" alt="">
+          <p>消防安全</p>
+          <section>
+            <h2>消防安全</h2>
+            <p>画室消防设施配备完善，每年定时消防演习，保护师生安全我们毫不松懈</p>
+            <a href="#">查看详情+</a>
+          </section>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- 北艺环境结束 -->
+  <!-- 空行 -->
+  <div class="index-line1"></div>
+  <!-- 北艺作品,news -->
+  <div class="index-works-news">
+    <div class="index-works">
+      <h2>作品欣赏<a href="#">更多>></a></h2>
+      <ul>
+        <li class="active">
+          <a>素描作品</a>
+        </li>
+        <li><a>速写作品</a></li>
+        <li><a>色彩作品</a></li>
+        <li><a>设计作品</a></li>
+      </ul>
+      <div class="index-works-content">
+        <div>
+          <a href="#"><img src="./images/work/suMiao/addff9280c3a69e5.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suMiao/9bafd6182482e7e4.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suMiao/112eb2cb7de5a304.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suMiao/caf7f0d01774c196.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suMiao/7e31359b1b197ae1.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suMiao/69d4d2ea723023d5.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suMiao/d2fe1483552b9dc2.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suMiao/051661e0ff1a71e0.jpg" alt=""></a>
+        </div>
+        <div>
+          <a href="#"><img src="./images/work/suXie/2d75e74e40ab84aa.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suXie/2819ac124891240e.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suXie/fdd8d2889b8be746.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suXie/a9dbb81524adc6e1.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suXie/5ab3f301fe4d9c89.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suXie/4cff179dae80bb75.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suXie/83e9ab94b6089ccb.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suXie/16e5c653411c85aa.jpg" alt=""></a>
+        </div>
+        <div>
+          <a href="#"><img src="./images/work/seCai/d24b2126043fa051.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/seCai/23d53ef56c5c5552.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/seCai/d37714a2cc9ee137.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/seCai/b2058f51bc4a8142.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suMiao/7e31359b1b197ae1.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suMiao/69d4d2ea723023d5.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suMiao/d2fe1483552b9dc2.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/suMiao/051661e0ff1a71e0.jpg" alt=""></a>
+        </div>
+        <div>
+          <a href="#"><img src="./images/work/sheji/bf6e0487b09907ea.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/sheji/ee87506b28ae5317.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/sheji/7a140f3825a8449c.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/sheji/89610f99ae6d63f4.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/sheji/7e39756d44cc611f.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/sheji/619bc7b8bcafb332.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/sheji/6edef8986f82e3b0.jpg" alt=""></a>
+          <a href="#"><img src="./images/work/sheji/7730b243f34d458c.jpg" alt=""></a>
+        </div>
+      </div>
+    </div>
+    <div class="index-news">
+      <h2>北艺咨询<a href="#">更多>></a></h2>
+      <ul>
+        <li class="active"><a>画室咨讯</a></li>
+        <li><a>艺考资讯</a></li>
+      </ul>
+      <div class="index-news-content">
+        <div>
+          <a href="#"><img src="./images/news/byNews/122fde179b58a42d.jpg" alt=""></a>
+          <a href="#"><img src="./images/news/byNews/3233eb120f128726.jpg" alt=""></a>
+          <a href="#"><img src="./images/news/byNews/c36173eec23cd196.jpg" alt=""></a>
+          <a href="#"><img src="./images/news/byNews/363ff604adbc1eae.jpg" alt=""></a>
+          <a href="#"><img src="./images/news/byNews/e8eb031dcd011688.jpg" alt=""></a>
+          <a href="#"><img src="./images/news/byNews/ded710b39e8717cd.png" alt=""></a>
+        </div>
+        <div>
+          <a href="#"><img src="./images/news/artNews/bdd9508987178be3.jpg" alt=""></a>
+          <a href="#"><img src="./images/news/artNews/6791387233a9cb62.png" alt=""></a>
+          <a href="#"><img src="./images/news/artNews/17715c9cfc367a13.jpg" alt=""></a>
+          <a href="#"><img src="./images/news/artNews/13aab03fba3af848.jpg" alt=""></a>
+          <a href="#"><img src="./images/news/artNews/25c378bb23cc42db.jpg" alt=""></a>
+          <a href="#"><img src="./images/news/artNews/f792a59c7485a8b0.jpg" alt=""></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 北艺作品,news结束 -->
+  <!-- 校区地址 -->
+  <div class="index-address" style="background: url(./images/school/index-map-pic.jpg) center 25% no-repeat;">
+    <div class="index-address-center">
+      <a href="#">
+        <img src="./images/school/cd250c73f3230fec.png" alt="">
+        <div>
+          <h2>东湖校区</h2>
+          <p>在线报名</p>
+        </div>
+      </a>
+      <a href="#">
+        <img src="./images/school/cd250c73f3230fec.png" alt="">
+        <div>
+          <h2>二七路校区</h2>
+          <p>在线报名</p>
+        </div>
+      </a>
+      <a href="#">
+        <img src="./images/school/34c533b0b23afc1f.jpg" alt="">
+        <div>
+          <h2>新湖美校区</h2>
+          <p>在线报名</p>
+        </div>
+      </a>
+      <a href="#">
+        <img src="./images/school/60dba03302234905.jpg" alt="">
+        <div>
+          <h2>武昌司门口校区</h2>
+          <p>在线报名</p>
+        </div>
+      </a>
+      <a href="#">
+        <img src="./images/school/9bc5a9149dda90ae.jpg" alt="">
+        <div>
+          <h2>古田校区</h2>
+          <p>在线报名</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <!-- 校区地址结束 -->
+  <!-- 页尾 -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-top-left">
+        <a href="#">热门班型</a>
+        <a href="#">招生简章</a>
+        <a href="#">统考班</a>
+        <a href="#">三美班</a>
+        <a href="#">校考班</a>
+        <a href="#">周末班</a>
+      </div>
+      <div class="footer-top-center">
+        <p>全国咨询热线</p>
+        <p><span>159-2760-2081</span>王老师</p>
+        <p><span>158-7176-6517</span>周老师</p>
+        <p><span>180-7173-6277</span>全老师</p>
+        <p><span>188-2701-3706</span>王亮老师</p>
+        <p><span>131-2518-8781</span>杨老师</p>
+        <div>
+          <div>
+            <a>
+              <img src="./images/qq-icon.png" alt="">
+            </a>
+            <a>
+              <img src="./images/wb.png" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-top-right">
+        <img src="./images/e68abee962e78f6c.jpg" alt="">
+        <p>北艺画室公众号</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        <p>版权归属：武汉北艺美育艺术培训学校© 2004-2023</p>
+        <p>
+          备案信息：
+          <a href="#">
+            <img src="./images/ba1.png" alt="">
+            鄂ICP备09015685号
+          </a>
+          <a href="#">
+            <img src="./images/ba.png" alt="">
+            鄂公网安备 42011502000454号
+          </a>
+        </p>
+        <p>本站部分内容与配图转载于网络，如有侵权请联系客服删除。</p>
+        <br>
+        <p>
+          友情链接：
+          <a href="#">中小学冬令营</a> |
+          <a href="#">成都留学机构</a> |
+          <a href="#">上海数控学校</a> |
+          <a href="#">广东教师资格证报名</a> |
+          <a href="#">叛逆孩子管教学校</a> |
+          <a href="#">济南寄宿考研</a> |
+          <a href="#">美术加盟</a> |
+          <a href="#">插画培训</a> |
+          <a href="#">教育培训加盟</a> |
+          <a href="#">贵阳成人高考</a> |
+          <a href="#">知识付费系统</a> |
+          <a href="#">舞蹈培训</a> |
+          <a href="#">对外汉语</a> |
+          <a href="#">健美操培训</a> |
+          <a href="#">北京教师资格网</a> |
+          <a href="#">家庭教育</a> |
+          <a href="#">艺考培训</a> |
+          <a href="#">电大中专</a> |
+          <a href="#">美国留学中介</a> |
+          <a href="#">重庆自考</a> |
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+<script>
+  // header轮播图
+  const carouselImages = document.querySelectorAll('.carousel img');
+  const carouselCircles = document.querySelectorAll('.h-turn-pic-circle-center>div');
+  const carouselCirclesBig = document.querySelectorAll('.h-circle-big');
+  let currentIndex = 0;
+  // 第一张图片默认显示
+  carouselImages[0].style.opacity = 1;
+  function swiper(Cindex) {
+    // 当前图片透明&当前按钮恢复原状
+    carouselImages[currentIndex].style.opacity = 0;
+    carouselCircles[currentIndex].classList.remove('h-circle-s');
+    // 是否按钮调整图片
+    if (Cindex !== undefined) {
+      // 选中图片不透明&选中按钮不透明
+      currentIndex = Cindex;
+      carouselImages[currentIndex].style.opacity = 1;
+      carouselCircles[currentIndex].classList.add('h-circle-s');
+      return;
+    }
+    // 下一张图片不透明&下一张按钮不透明
+    currentIndex = (currentIndex + 1) % carouselImages.length;
+    carouselImages[currentIndex].style.opacity = 1;
+    carouselCircles[currentIndex].classList.add('h-circle-s');
+  }
+
+  let timer1 = setInterval(swiper, 3000); // 设置切换间隔为3秒
+
+  // 设置按钮点击事件,点击后切换图片
+  for (let i = 0; i < carouselCircles.length; i++) {
+    carouselCircles[i].onclick = function () {
+      swiper(i);
+      clearInterval(timer1);
+      timer1 = setInterval(swiper, 3000);
+    }
+  }
+  //扩大选取区域,利于点击
+  for (let i = 0; i < carouselCircles.length; i++) {
+    carouselCirclesBig[i].onclick = function () {
+      swiper(i);
+      clearInterval(timer1);
+      timer1 = setInterval(swiper, 3000);
+    }
+  }
+  //culture留言点击变色
+  const active = document.querySelectorAll('.index-culture-speak-tab p');
+  const ul = document.querySelector('.index-culture-speak-content ul');
+  const form = document.querySelector('.index-culture-speak-content form');
+  for (let i = 0; i < active.length; i++) {
+    active[i].onclick = function () {
+      //点击时先删除全部class,隐藏全部内容
+      for (let j = 0; j < active.length; j++) {
+        active[j].classList.remove('active');
+        ul.style.display = 'none';
+        form.style.display = 'none';
+      }
+      //添加class
+      this.classList.add('active');
+      if (i == 0) {
+        ul.style.display = 'block';
+      } else {
+        form.style.display = 'block';
+      }
+    }
+  }
+  // 师资团队点击切换
+  const teacherTeam = document.querySelectorAll('.index-teacher-content ul');
+  const leftbut = document.querySelector('.index-left-jt');
+  const rightbut = document.querySelector('.index-right-jt');
+  let index = 0;
+  function changeImage(change) {
+    if (change == 1) {
+      index == 2 ? index = 0 : index++; //判断是否为3，是则返回0，否则加1
+    } else if (change == -1) {
+      index == 0 ? index = 2 : index--; //判断是否为0，是则返回2，否则减1
+    }
+  }
+  leftbut.onclick = function () {
+    changeImage(-1);
+    for (let i = 0; i < teacherTeam.length; i++) {
+      teacherTeam[i].style.display = 'none';
+    }
+    teacherTeam[index].style.display = 'block';
+  };
+  rightbut.onclick = function () {
+    changeImage(1);
+    for (let i = 0; i < teacherTeam.length; i++) {
+      teacherTeam[i].style.display = 'none';
+    }
+    teacherTeam[index].style.display = 'block';
+  };
+  // 作品,news切换
+  let worksView = document.querySelectorAll('.index-works-content>div');
+  let newsView = document.querySelectorAll('.index-news-content>div');
+  let works = document.querySelectorAll('.index-works>ul>li');
+  let news = document.querySelectorAll('.index-news>ul>li');
+  for (let i = 0; i < works.length; i++) {
+    works[i].onclick = function () {
+      for (let j = 0; j < works.length; j++) {
+        works[j].classList.remove('active');
+        worksView[j].style.display = 'none';
+      }
+      this.classList.add('active');
+      worksView[i].style.display = 'block';
+    }
+  }
+  for (let i = 0; i < news.length; i++) {
+    news[i].onclick = function () {
+      for (let j = 0; j < news.length; j++) {
+        news[j].classList.remove('active');
+        newsView[j].style.display = 'none';
+      }
+      this.classList.add('active');
+      newsView[i].style.display = 'block';
+    }
+  }
+
+  // 鼠标划入校区地址切换
+  let bg = document.querySelector('.index-address');
+  let schoolChange = document.querySelectorAll('.index-address-center>a');
+  schoolChange[0].onmouseover = function () {
+    bg.style.background = "url(./images/school/donhu.jpg";
+  }
+  schoolChange[1].onmouseover = function () {
+    bg.style.background = "url(./images/school/27.jpg";
+  }
+  schoolChange[2].onmouseover = function () {
+    bg.style.background = "url(./images/school/xinhumei.jpg";
+  }
+  schoolChange[3].onmouseover = function () {
+    bg.style.background = "url(./images/school/simenkou.jpg";
+  }
+  schoolChange[4].onmouseover = function () {
+    bg.style.background = "url(./images/school/gutian.jpg";
+  }
+</script>
+
+</html>
